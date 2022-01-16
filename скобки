@@ -1,0 +1,45 @@
+fun main(){
+
+var x: Boolean = true
+
+var s = readLine()
+
+var stack = mutableListOf<String>()
+
+for (i in s.orEmpty()){
+
+if (i in "({[") {
+
+stack.add("$i")
+
+}
+
+if (i in ")}]") {
+
+if (stack.isEmpty()){
+
+x = false
+
+break
+
+}
+
+var el = stack.removeLast()
+
+if (((el == "(" && i in ")") (el == "{" && i in "}") (el == "[" && i in "]")) == false)
+
+x = false
+
+}
+
+}
+
+if (x == true && stack.isEmpty())
+
+println("Правильно")
+
+else
+
+println("Ошибка")
+
+}
